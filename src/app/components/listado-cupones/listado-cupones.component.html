@@ -1,0 +1,76 @@
+<div class="title">
+    <h1>Listado de cupones</h1>
+</div>
+
+
+
+
+<div class="container">
+    <div class="botones">
+        <button routerLink="/crearCupon" mat-raised-button color="primary">Crear cupón</button>
+
+        <!-- También puede ser escrito de esta forma el routerLink, entre corchetes -->
+        <!-- <button [routerLink]="['/crearCupon']" mat-raised-button color="primary">Crear cupón 2</button> -->
+    </div>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Filtrar</mat-label>
+        <input matInput (keyup)="filtrar($event)" placeholder="Escribe lo que quieres encontrar" #input autocomplete="off">
+      </mat-form-field>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+        
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+            <!-- Descuento Column -->
+            <ng-container matColumnDef="Descuento">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="Sort by number"> Descuento </th>
+                <td mat-cell *matCellDef="let element"> {{element.D_Descuento}} </td>
+            </ng-container>
+        
+            <!-- Cupón Column -->
+            <ng-container matColumnDef="Cupon">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cupón </th>
+                <td mat-cell *matCellDef="let element">
+                    <button routerLink="/verCupon/1" class="agregar" mat-raised-button color="secondary">{{element.D_Cupon}}</button>
+                </td>
+            </ng-container>
+        
+            <!-- Tipo promocion Column -->
+            <ng-container matColumnDef="Tipo promocion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo promocion </th>
+                <td mat-cell *matCellDef="let element"> {{element.K_Tipo_Promocion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Acciones">
+                <th mat-header-cell *matHeaderCellDef> 
+                    Acciones
+                </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <button routerLink="/editarCupon/1" class="agregar" mat-raised-button color="secondary">EDITAR</button>
+                    
+                    <!-- Forma de pasar parámetro con la forma de corchetes en routerLink -->
+                    <!-- <button [routerLink]="['/editarCupon',2]" mat-raised-button color="primary">EDITARR</button> -->
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="3">No hay resultados para "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons 
+            aria-label="Selecciona una página">
+        </mat-paginator>
+    </div>
+</div>
+
+  
+  

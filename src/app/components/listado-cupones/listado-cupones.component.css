@@ -1,0 +1,41 @@
+:root{
+    --color-naranja: #FF6B00;
+    --color-azul: #005CB9;
+}
+
+.container{
+    margin: 0 20%;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: #FF6B00;
+}
+
+.title h1{
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+table {
+    width: 100%;
+}
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td, th {
+    width: 25%;
+}
+
+.botones{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+.botones button{
+    text-transform: uppercase;
+}
